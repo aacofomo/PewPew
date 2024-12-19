@@ -1,0 +1,30 @@
+name: IAC
+
+on:
+  push:
+    branches: [ "aacofomo" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  createIACDev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # - name: Deploy Bicep files
+      #   uses: azure/arm-deploy@v2
+      #   with:
+      #     subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      #     resourceGroupName: "rg-calicot-web-dev-03"
+      #     scope: 'resourcegroup'
+      #     template: 'scripts/main.bicep'
+      #     parameters: '.github/workflows/parameters/dev.bicepparam'
