@@ -2,7 +2,7 @@ name: IAC
 
 on:
   push:
-    branches: [ "aacofomo" ]
+    branches: [ "aamyot" ]
   pull_request:
     branches: [ "main" ]
 
